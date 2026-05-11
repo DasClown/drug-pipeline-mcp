@@ -80,6 +80,28 @@ drug-pipeline --http --port 8081
 > *"What are the eligibility criteria for NCT03178617?"*
 → `get_trial_detail(nct_id="NCT03178617")`
 
+## Tool-by-Tool Query Examples
+
+| Tool | Example query | Expected answer |
+|------|---------------|-----------------|
+| `search_trials` | Find recruiting Phase 3 trials for non-small cell lung cancer | Matching trials with NCT IDs, phases, sponsors, and statuses |
+| `get_trial_detail` | Show the protocol for NCT03178617 | Eligibility criteria, outcomes, locations, and intervention details |
+| `lookup_drug` | Look up semaglutide | Active ingredients, strengths, RxNorm identifiers, and ATC class |
+| `get_approvals` | Show FDA approvals for Keytruda | FDA application numbers, submissions, dates, and status history |
+| `get_eu_approvals` | Is Keytruda authorized in the EU? | EMA authorization status, brand names, ATC, and flags |
+| `get_safety_data` | What adverse events are reported for semaglutide? | FAERS report counts, top reactions, and serious outcome summary |
+| `approved_for_condition` | Which drugs are approved for non-small cell lung cancer? | EU-approved medicines matching the condition and therapeutic area |
+| `get_trial_results` | Summarize results for NCT03178617 | Outcome measures, adverse events, baseline data, and participant flow |
+| `list_orphan_drugs` | List orphan drugs in oncology | Orphan drug designations filtered by therapeutic area |
+| `company_pipeline` | Show AstraZeneca's oncology pipeline | Trials grouped by phase plus EU approval context when available |
+| `search_publications` | Find PubMed publications for tirzepatide obesity trials | PMID-linked publication matches with titles and metadata |
+| `get_drug_label` | What does the FDA label say for Keytruda? | Indications, warnings, contraindications, dosing, and label sections |
+| `get_recalls` | Are there recalls for Tylenol? | Recall class, reason, dates, and recalling firm details |
+| `detect_safety_signals` | Detect safety signals for semaglutide | PRR-style disproportionate adverse event signals from FAERS |
+| `get_patent_expiry` | When may Keytruda exclusivity expire? | Approval dates and estimated patent or exclusivity information |
+| `get_drug_interactions` | Check interactions for warfarin | FDA label interaction text and FAERS co-reported drugs |
+| `drug_pipeline` | Give me the full pipeline view for semaglutide | Composite drug info, approvals, safety, trials, publications, labels, and sources |
+
 ## Example Output (drug_pipeline)
 
 ```json
