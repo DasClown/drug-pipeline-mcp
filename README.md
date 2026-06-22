@@ -159,6 +159,41 @@ Beyond drug-level approvals, this project provides **multi-jurisdiction regulato
 
 ## Example Agent Queries
 
+### Per-Tool Query Examples
+
+| # | Tool | Example Query |
+|---|------|--------------|
+| 1 | `search_trials` | `search_trials(condition="non-small cell lung cancer", phase="PHASE3", status="RECRUITING")` |
+| 2 | `get_trial_detail` | `get_trial_detail(nct_id="NCT03178617")` → full protocol, eligibility, outcomes |
+| 3 | `get_trial_results` | `get_trial_results(nct_id="NCT02918162")` → endpoints, adverse events, participant flow |
+| 4 | `get_trial_sites` | `get_trial_sites(nct_id="NCT03178617")` → facility locations, countries |
+| 5 | `lookup_drug` | `lookup_drug(name="semaglutide")` → active ingredients, ATC, NDC |
+| 6 | `get_approvals` | `get_approvals(drug_name="Keytruda")` → FDA approval history |
+| 7 | `get_eu_approvals` | `get_eu_approvals(drug_name="Keytruda")` → EMA authorization, orphan/biosimilar flags |
+| 8 | `get_safety_data` | `get_safety_data(drug_name="semaglutide")` → FAERS adverse events, serious outcomes |
+| 9 | `detect_safety_signals` | `detect_safety_signals(drug_name="semaglutide")` → disproportionality screening |
+| 10 | `get_drug_label` | `get_drug_label(drug_name="Keytruda")` → indications, boxed warnings, dosing |
+| 11 | `get_dailymed_label` | `get_dailymed_label(drug_name="Tylenol")` → DailyMed SPL, OTC-friendly |
+| 12 | `get_recalls` | `get_recalls(drug_name="metformin")` → FDA recalls, Class I/II/III |
+| 13 | `get_patent_expiry` | `get_patent_expiry(drug_name="Keytruda")` → exclusivity dates |
+| 14 | `get_drug_interactions` | `get_drug_interactions(drug_name="warfarin")` → FDA label + FAERS co-reported |
+| 15 | `get_drug_pricing` | `get_drug_pricing(drug_name="epinephrine")` → NDC codes, manufacturers, NADAC |
+| 16 | `get_opentargets_drug` | `get_opentargets_drug(drug_name="ibrance")` → drug-target MOA, clinical stage |
+| 17 | `get_us_orphan_designations` | `get_us_orphan_designations(drug_name="evkeeza")` → FDA orphan status |
+| 18 | `approved_for_condition` | `approved_for_condition(condition="melanoma")` → EU-approved drugs for condition |
+| 19 | `list_orphan_drugs` | `list_orphan_drugs(condition="lung cancer")` → EU orphan drug designations |
+| 20 | `list_biosimilars` | `list_biosimilars(condition="rheumatoid arthritis")` → EU biosimilars by area |
+| 21 | `list_loss_of_exclusivity` | `list_loss_of_exclusivity(limit=20)` → drugs approaching LOE |
+| 22 | `company_pipeline` | `company_pipeline(company_name="Novo Nordisk", include_eu=True)` → R&D by phase |
+| 23 | `search_publications` | `search_publications(query="semaglutide diabetes phase 3", max_results=10)` → PubMed papers |
+| 24 | `find_investigators` | `find_investigators(condition="type 2 diabetes")` → KOLs and PIs |
+| 25 | `detect_combination_therapies` | `detect_combination_therapies(drug_name="pembrolizumab", condition="melanoma")` → co-administered drugs |
+| 26 | `compare_drugs` | `compare_drugs(drug_a="Ozempic", drug_b="Mounjaro")` → head-to-head comparison |
+| 27 | `drug_pipeline` | `drug_pipeline(drug_name="semaglutide")` → composite: drug + FDA + EU + safety + trials + pubs |
+| 28 | `pipeline_landscape` | `pipeline_landscape(condition="non-small cell lung cancer")` → full pipeline landscape |
+
+### Natural Language Examples
+
 > *"What's in the pipeline for GLP-1 agonists?"*
 → `drug_pipeline(drug_name="semaglutide")` → ATC class, FDA status, clinical trials, publications
 
@@ -179,6 +214,15 @@ Beyond drug-level approvals, this project provides **multi-jurisdiction regulato
 
 > *"What drugs are approved for non-small cell lung cancer in the EU?"*
 → `approved_for_condition(condition="non-small cell lung cancer")`
+
+> *"Compare Ozempic vs Mounjaro for weight loss."*
+→ `compare_drugs(drug_a="Ozempic", drug_b="Mounjaro")` → FDA, EU, MOA, safety, patent
+
+> *"Find the top 10 investigators working on CAR-T cell therapy."*
+→ `find_investigators(condition="CAR-T cell therapy", limit=10)` → KOLs and PIs
+
+> *"Show me clinical trials for Novo Nordisk in Phase 2."*
+→ `company_pipeline(company_name="Novo Nordisk", include_eu=True)` → R&D pipeline by phase
 
 ---
 
